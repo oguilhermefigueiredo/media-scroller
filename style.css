@@ -1,0 +1,117 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+ padding: 0px 0px 40px 0px;
+}
+
+div::-webkit-scrollbar {
+  width: 2em;
+  height: 0.5em;
+}
+div::-webkit-scrollbar-track {
+  background-image: linear-gradient(to right, #353535 0%, rgb(45, 36, 36) 100%);
+  border-radius: 100vw;
+  margin-block: 0.5em;
+}
+div::-webkit-scrollbar-thumb {
+  border-radius: 100vw;
+  background-image: linear-gradient(to right, #a8caba 0%, #5d4157 100%);
+}
+
+div::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(to right, #273e34 0%, #4b2f45 100%);
+}
+
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: gray gray;
+    scrollbar-width: auto;
+  }
+}
+
+.media-scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 21%;
+  --spacer: var(--size-3);
+  gap: var(--spacer);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0 var(--spacer) var(--spacer);
+
+}
+
+.media-scroller--with-groups {
+  grid-auto-columns: 100%;
+}
+
+.media-group {
+  display: grid;
+  gap: var(--spacer); 
+  grid-auto-flow: column;
+}
+
+.media-element {
+  display: grid;
+  grid-template-rows: min-content;
+  gap: var(--spacer);
+  padding: var(--spacer);
+  background: var(--surface-2);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-2);
+}
+
+.media-element > img {
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: var(--spacer, 1rem);
+}
+
+.snaps-inline > * {
+  scroll-snap-align: start;
+}
+
+/* general styling */
+
+.container {
+  inline-size: min(100% - 4rem, 70rem);
+  margin-inline: auto;
+}
+
+.flow {
+  display: grid;
+  gap: var(--size-3);
+}
+
+.page-header {
+  padding-block: var(--size-9);
+  margin-block-end: var(--size-9);
+  background: var(--gradient-16);
+  color: var(--gray-0);
+  box-shadow: var(--shadow-2);
+}
+
+.page-title {
+  font-size: var(--font-size-fluid-3);
+}
+
+.page-subtitle {
+  font-size: var(--font-size-fluid-1);
+}
+
+.section-title {
+  padding-inline-start: var(--size-6);
+  margin-block: var(--size-9) var(--size-3);
+}
